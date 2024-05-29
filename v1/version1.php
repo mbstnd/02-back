@@ -8,22 +8,23 @@ $_mantenedor = $_partes[3];
 $_parametros = [];
 $_parametros = $_partes[4];
 
-if (strlen($_parametros) > 0) {
+if (strlen($_parametros)> 0){
     $_parametros = explode('?', $_parametros)[1];
     $_parametros = explode('&', $_parametros);
-} else {
+}else{
     $_parametros = [];
 }
 
 //header
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE");
+header("Acces-Control-Allow-Origin: *");
+header("Acces-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE");
 header("Content-Type: application/json; charset=UTF-8");
 
+//Authorization
 $_header = null;
 try {
     $_header = isset(getallheaders()['Authorization']) ? getallheaders()['Authorization'] : null;
-    if ($_header === null) {
+    if ($_header === null){
         throw new Exception("No tiene autorizacion");
     }
 } catch (Exception $e) {
@@ -38,8 +39,3 @@ $_token_post = 'Bearer post';
 $_token_put = 'Bearer put';
 $_token_patch = 'Bearer patch';
 $_token_delete = 'Bearer delete';
-$_token_delete_web = 'Bearer delete';
-$_token_delete_empresa1 = 'Bearer delete';
-
-
-
